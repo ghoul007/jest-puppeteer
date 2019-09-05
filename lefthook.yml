@@ -1,0 +1,14 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{scss,js}"
+      run: prettier  --single-quote --write {staged_files} && git add {staged_files}
+    lint:js:
+      glob: 'src/**/*.js'
+      run: npm run --silent lint:js:fix {staged_files}
+    #   glob: "*.ts"
+    #   run: eslint --ext .ts --fix {staged_files} && git add {staged_files}
+    # scss-lint:
+    #   glob: "*.scss"
+    #   run: stylelint --fix {staged_files} && git add {staged_files}
